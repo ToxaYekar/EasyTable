@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" href="styles.css" th:href="@{/styles.css}">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/table.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <title>Easy Table</title>
+</head>
+
+<body class="bodycreate">
+
+<header class="header">
+    <div class="header_inner">
+        <object data="/mesa.svg" width="60px" height="60px">
+        </object>
+        <a class="btnhome" href="/index.html"><h1>Easy table</h1></a>
+    </div>
+</header>
+
+
+<div class="introextra">
+    <div class="inner">
+<!--        <p class="psuccess">Successful reservation, have a great time</p>-->
+        <p th:text="${'Congratulations, ' + person.getName() + ' ' + person.getSurname() + '!'}">text1</p>
+        <p th:text="${'Your reservation in ' +
+    res.getFoodPlace().getTitle() + ' at ' + res.getReservationDate() + ', ' + res.getReservationTime() + ' was successful!'}"> text2</p>
+        <p th:text="${'Have a great time!'}">text3</p>
+        <a class="btn" href="/index.html">Home Page</a>
+
+    </div>
+
+    <div class="footer"><p>@2022 Easy Table</p></div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" href="styles.css" th:href="@{/styles.css}">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/table.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
+    <title>Reservation Form</title>
+</head>
+<body class="bodycreate">
+
+    <header class="header">
+        <div class="header_inner">
+            <object data="/mesa.svg" width="60px" height="60px">
+            </object>
+            <a class="btnhome" href="/index.html"><h1>Easy table</h1></a>
+        </div>
+    </header>
+    <div class="introcreate">
+        
+<p class="p2">Please, enter reservation date and time:</p>
+<div class="form">
+<form th:method="POST" th:action="@{/reservation/{id}(id=${placeId})}" th:object="${reservation}">
+    <br/>
+    <div class="label"><label >Pick your date:</label>
+       <select th:object="${reservation}" th:field="*{reservationDate}" id="date">
+            <option th:each="pickerDate : ${datePicker}"
+                    th:value="${pickerDate.getDate()}"
+                    th:text="${pickerDate.getShortDate()}"></option>
+        </select></div>
+    <!--<input type="text" th:field="*{reservationDate}" id="date" placeholder="Pick your date:"/>
+    <div class="error" style="color:red" th:if="${#fields.hasErrors('reservationDate')}" th:errors="*{reservationDate}">Date error</div>-->
+    <br/>
+    <br/>
+    <div class="label"><label >Pick your time:</label>
+    <select th:object="${reservation}" th:field="*{reservationTime}" id="reservation" >
+        <option th:each="picker : ${timePicker}"
+                th:value="${picker.getLongTime()}"
+                th:text="${picker.getShortTime()}"></option>
+    </select></div>
+    <div class="error" style="color:red" th:if="${#fields.hasErrors('reservationTime')}" th:errors="*{reservationTime}">Time error</div>
+</div>
+
+    <div class="submitbtn">
+        <br/>
+        <a href="/people/new"><input type="submit" value="SUBMIT"/></a>
+    </div>
+    <div class="footer"><p>@2022 Easy Table</p></div>
+    </div>
+</form>
+</body>
+</html>
